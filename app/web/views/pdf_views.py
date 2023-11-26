@@ -12,7 +12,6 @@ bp = Blueprint("pdf", __name__, url_prefix="/api/pdfs")
 @login_required
 def list():
     pdfs = Pdf.where(user_id=g.user.id)
-
     return Pdf.as_dicts(pdfs)
 
 

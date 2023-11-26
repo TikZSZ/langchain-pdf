@@ -11,6 +11,8 @@ class Pdf(BaseModel):
     user_id: int = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
     user = db.relationship("User", back_populates="pdfs")
 
+    
+
     conversations = db.relationship(
         "Conversation",
         back_populates="pdf",
