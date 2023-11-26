@@ -13,7 +13,7 @@ class StreamingHandler(BaseCallbackHandler):
   def on_chat_model_start(self, serialized: Dict[str, Any],messages,run_id,**kwargs):
     if(serialized["kwargs"]["streaming"]):
       self.streaming_run_id = run_id
-  def on_llm_new_token(self, token: str,chunk,run_id,**kwargs ):
+  def on_llm_new_token(self, token: str,run_id,**kwargs ):
     if(self.should_access_que(run_id)):
       self.queue.put(token)
   def on_llm_end(self,response,run_id: UUID,**kwargs):

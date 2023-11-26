@@ -11,7 +11,7 @@ pinecone.init(
 vectorstore = Pinecone.from_existing_index(index_name=os.getenv("PINECONE_INDEX_NAME"),embedding=embeddings)
 
 
-def build_retriver(chat_args:ChatArgs):
+def build_retriver(chat_args:ChatArgs,k:int):
   search_kwargs = {"filter":{"pdf_id":chat_args.pdf_id}}
   return vectorstore.as_retriever(
     search_kwargs=search_kwargs
